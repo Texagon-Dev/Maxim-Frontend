@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 import { Divider, HStack, Stack } from "@chakra-ui/react";
 import Sidebar from "./components/Sidebar/Sidebar";
-import UploadSection from "./UploadSection";
 import ChatSection from "./ChatSection";
 import TabsView from "./components/Tabs";
 import Header from "./components/Header";
@@ -201,17 +200,6 @@ function App() {
               bg={"brand.light"}
               align={"flex-start"}
             >
-              <UploadSection
-                ActiveChat={ActiveChat}
-                SelectedFile={ActiveFile}
-                setSelectedFile={setActiveFile}
-                setChatHistoryfunc={setChatHistoryfunc}
-                NewChat={NewChat}
-                setNewChat={setNewChat}
-                newchatfunc={newchatfunc}
-                ChatStatus={ChatStatus}
-                setChatStatus={setChatStatus}
-              />
               <ChatSection
                 ActiveChat={ActiveChat}
                 updateChatHistoryfunc={updateChatHistoryfunc}
@@ -222,19 +210,6 @@ function App() {
               />
             </Stack>
             <TabsView
-              upload={
-                <UploadSection
-                  ActiveChat={ActiveChat}
-                  SelectedFile={ActiveFile}
-                  setSelectedFile={setActiveFile}
-                  setChatHistoryfunc={setChatHistoryfunc}
-                  NewChat={NewChat}
-                  setNewChat={setNewChat}
-                  newchatfunc={newchatfunc}
-                  ChatStatus={ChatStatus}
-                  setChatStatus={setChatStatus}
-                />
-              }
               chat={
                 <ChatSection
                   ActiveChat={ActiveChat}
