@@ -22,21 +22,21 @@ function HistoryButton(props) {
         if (props.ActiveChat.id === id) {
           props.setSelectedChat(null);
           props.setActiveChat(null);
-          
+
           window.location.reload();
         }
 
-        if(props.SelectedChat.id == id){
+        if (props.SelectedChat.id == id) {
           props.setSelectedChat(null);
           props.setActiveChat(null);
-          
+
           window.location.reload();
         }
       }
 
       await waitForOneSecond();
 
-      console.log("The Active Chat  : " , props.ActiveChat);
+      console.log("The Active Chat  : ", props.ActiveChat);
 
 
 
@@ -44,7 +44,7 @@ function HistoryButton(props) {
 
 
 
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const EDC = async (id, chatname) => {
@@ -53,7 +53,7 @@ function HistoryButton(props) {
     try {
       await EditChat(props.chat.id, chatname);
       props.setChatHistoryfunc();
-    } catch (err) {}
+    } catch (err) { }
   };
 
   return (
@@ -73,9 +73,17 @@ function HistoryButton(props) {
       align={"center"}
       spacing={props.isExpanded ? "6" : "0"}
       {
-        ...!props.isExpanded && {onClick: () => {
+      ...!props.isExpanded && {
+        onClick: () => {
+
           props.setSelectedChat(props.chat);
-        } }
+
+          if (window.location.pathname != "/dashboard/chat") {
+            window.location.href = "/dashboard/chat"
+          }
+
+        }
+      }
       }
       {...props}
     >
@@ -88,11 +96,17 @@ function HistoryButton(props) {
         {...props}
 
         {
-          ...props.isExpanded && {onClick: () => {
+        ...props.isExpanded && {
+          onClick: () => {
             props.setSelectedChat(props.chat);
-          } }
+
+            if (window.location.pathname != "/dashboard/chat") {
+              window.location.href = "/dashboard/chat"
+            }
+          }
         }
-        
+        }
+
       >
         {props.isExpanded ? props.historyTitle : null}
       </Heading>
@@ -123,7 +137,7 @@ function HistoryButton(props) {
               color: "brand.main",
             }}
             onClick={() => {
-            
+
               HandleDelete(props.chat.id);
             }}
           >
@@ -138,7 +152,7 @@ function HistoryButton(props) {
           bg="transparent"
         />
       )}
-      <EditModal isOpen={isOpen} onClose={onClose} chatid={props.chat.id} fnc = {EDC} />
+      <EditModal isOpen={isOpen} onClose={onClose} chatid={props.chat.id} fnc={EDC} />
     </HStack>
   );
 }

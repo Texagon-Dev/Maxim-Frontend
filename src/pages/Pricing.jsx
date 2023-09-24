@@ -52,7 +52,7 @@ export default function Pricing() {
 
     async function Charge(planid) {
 
-        if(!currentuser){
+        if (!currentuser) {
             window.location.href = "/login";
             return;
         }
@@ -170,7 +170,12 @@ export default function Pricing() {
                                             btnName={
                                                 currentuser && currentuser.Plan == item.Pid
                                                     ? "Selected"
-                                                    : <>{currentuser ? "Upgrade":"Get Started"}</>
+                                                    : <>{currentuser ? <>
+                                                        {
+                                                            currentuser.Plan <= item.Pid ? "Upgrade" : "Downgrade"
+                                                        }
+
+                                                    </> : "Get Started"}</>
                                             }
                                             isDisabled={currentuser && currentuser.Plan == item.Pid}
                                             type={"primary"}
