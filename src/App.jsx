@@ -40,18 +40,18 @@ function App() {
   // 5 ==> Loading Supabase Document , 6 ==> Supabase Document Loaded , 7 ==> Supabase Document Failed
 
   async function setChatHistoryfunc() {
-    console.log("Update Chat Issued");
+    //console.log("Update Chat Issued");
 
     setChatHistory([]);
     setchatloading(true);
     setChatHistory(await GetAllChats());
     setchatloading(false);
 
-    console.log("Update Chat Resolved");
+    //console.log("Update Chat Resolved");
   }
 
   async function updateChatHistoryfunc(chatid, msgjson) {
-    console.log("Update Chat Issued");
+    //console.log("Update Chat Issued");
     let CH;
     if (ActiveChat && ActiveChat.ChatHistory) {
       CH = ActiveChat.ChatHistory;
@@ -65,7 +65,7 @@ function App() {
     const foundIndex = ChatHistory.findIndex((item) => item.id === chatid);
     if (foundIndex != -1) {
       let ChatHistorytemp = ChatHistory;
-      console.log("Found Index : ", foundIndex, ChatHistorytemp[foundIndex]);
+      //console.log("Found Index : ", foundIndex, ChatHistorytemp[foundIndex]);
       ChatHistorytemp[foundIndex].ChatHistory = CH;
       setChatHistory(ChatHistorytemp);
     }
@@ -75,7 +75,7 @@ function App() {
     if (SelectedChat) {
       setActiveFile(null);
 
-      console.log("Selected Chat : ", SelectedChat);
+      //console.log("Selected Chat : ", SelectedChat);
       setActiveChat(SelectedChat);
       setNewChat(false);
 
@@ -86,10 +86,10 @@ function App() {
   }, [SelectedChat]);
 
   async function newchatfunc(newchat) {
-    console.log("New Chat Issued => ", newchat);
+    //console.log("New Chat Issued => ", newchat);
 
     if (newchat) {
-      console.log("New Chat Resolved => ", newchat.data[0]);
+      //console.log("New Chat Resolved => ", newchat.data[0]);
 
       const message =
         "Can you please Summarize it briefly in French? Also Add 3 Questions from the text with Proper Formatting in French.";
@@ -123,9 +123,9 @@ function App() {
     }
   }
 
-  React.useEffect(() => {
-    console.log("Active Chat : ", ActiveChat);
-  }, [ActiveChat]);
+  // React.useEffect(() => {
+  //   console.log("Active Chat : ", ActiveChat);
+  // }, [ActiveChat]);
 
   React.useEffect(() => {
     async function init() {

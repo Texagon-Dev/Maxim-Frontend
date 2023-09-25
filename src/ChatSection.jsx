@@ -4,7 +4,7 @@ import MessageUI from "./components/MessageUI";
 import InputField from "./components/InputField";
 import IconButton from "./components/IconButton";
 import { BiSolidSend } from "react-icons/bi";
-import { GetRequest, UpdateChatHist } from "./Shared/Function";
+import { GetRequest } from "./Shared/Function";
 
 function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
   const [messages, setMessages] = React.useState(
@@ -15,9 +15,11 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
     ActiveChat ? ActiveChat.BookName.endsWith(".pdf") : false
   );
 
-  React.useEffect(() => {
-    console.log("ChatFileType Changed = ", ChatFileType);
-  }, [ChatFileType]);
+  //console.log(ActiveChat ? ActiveChat.BookName.endsWith(".pdf") : false)
+
+  // React.useEffect(() => {
+  //   console.log("ChatFileType Changed = ", ChatFileType);
+  // }, [ChatFileType]);
 
   const chatboxRef = useRef(null);
   const msgboxRef = useRef(null);
@@ -27,14 +29,14 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
   useEffect(() => {
     if (chatboxRef.current) {
       chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
-      console.log("Scrolling to bottom");
+      //console.log("Scrolling to bottom");
     }
   }, [chatboxRef]);
 
   useEffect(() => {
     if (chatboxRef.current) {
       chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
-      console.log("Scrolling to bottom");
+      //console.log("Scrolling to bottom");
     }
   }, [msgboxRef]);
 
@@ -122,11 +124,14 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
           <>
             {messages?.map((message, index) => (
               <>
+                {/* {
+                  console.log(" Message : ", message, " ==> ", ActiveChat.BookName.endsWith(".pdf") ? message.source : [])
+                } */}
                 <MessageUI
                   key={index}
                   user={message.sender}
                   message={message.text}
-                  source={ChatFileType ? message.source || [] : []}
+                  source={ActiveChat.BookName.endsWith(".pdf") ? message.source : []}
                   refs={index === messages.length - 1 ? msgboxRef : null}
                 />
               </>

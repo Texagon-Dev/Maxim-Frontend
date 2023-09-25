@@ -6,6 +6,8 @@ import { FaRegUserCircle } from "react-icons/fa";
 function MessageUI(props) {
   const [message, setMessage] = React.useState(props.message.split("\n"));
 
+  // console.log(props.source)
+
   React.useEffect(() => {
     document.getElementById("chatbox").scrollTop =
       document.getElementById("chatbox").scrollHeight;
@@ -35,7 +37,7 @@ function MessageUI(props) {
             {props.message}
           </Text>
         </HStack>
-        {props.source.length > 0 ? (
+        {props.source.length>0 ? (
           <>
             <Text as={"p"} fontSize={"sm"} alignSelf={"flex-start"}>
               Page Numbers = {props.source.join(", ")}
@@ -65,10 +67,6 @@ function MessageUI(props) {
             {paragraph}
           </Text>
         ))}
-
-        {/* <Text as={"p"} fontSize={"lg"}>
-          {props.message}
-        </Text> */}
         <Icon as={FaRegUserCircle} boxSize={"6"} />
       </HStack>
     </Flex>

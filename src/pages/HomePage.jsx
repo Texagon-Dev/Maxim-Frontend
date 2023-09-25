@@ -115,7 +115,7 @@ export default function Homepage() {
                 w="full"
                 btnName={"Get Started"}
                 onClick={() => {
-                  window.location.href = "/dashboard";
+                  window.location.href = "/dashboard/chat";
                 }}
               />
             </HStack>
