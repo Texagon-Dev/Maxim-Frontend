@@ -14,6 +14,7 @@ import { useMediaQuery } from "@chakra-ui/react";
 import '../shadows.css'
 
 export default function Sidebar(props) {
+  console.log(props.history);
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   return props.isExpanded ? (
     <VStack
@@ -52,7 +53,6 @@ export default function Sidebar(props) {
       >
         {/* history array and logic goes here */}
         {props.history.length > 0 ? (
-          
           props.history?.map((history) => (
             <HistoryButton
               isExpanded={props.isExpanded}

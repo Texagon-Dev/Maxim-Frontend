@@ -23,14 +23,6 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
     ]
   );
 
-  const [ChatFileType, setChatFileType] = React.useState(
-    ActiveChat ? ActiveChat.BookName.endsWith(".pdf") : false
-  );
-
-  React.useEffect(() => {
-    console.log("ChatFileType Changed = ", ChatFileType);
-  }, [ChatFileType]);
-
   const chatboxRef = useRef(null);
   const msgboxRef = useRef(null);
 
@@ -56,6 +48,8 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
       //console.log("Change in Active Chat Detected");
     }
   }, [ActiveChat]);
+
+  console.log(messages)
 
   const onEnterPress = (e) => {
     if (userfieldmsg.trim() === "") return;
@@ -133,7 +127,6 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
         id="chatbox"
         ref={chatboxRef}
       >
-        {ChatStatus === 4 ? (
           <>
             {messages?.map((message, index) => (
               <>
@@ -141,46 +134,11 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
                   key={index}
                   user={message.sender}
                   message={message.text}
-                  source={ChatFileType ? message.source || [] : []}
                   refs={index === messages.length - 1 ? msgboxRef : null}
                 />
               </>
             ))}
           </>
-        ) : (
-          <>
-            <VStack
-              spacing={"3"}
-              padding={"2"}
-              w={"full"}
-              h={"full"}
-              align={"center"}
-              justify={"center"}
-            >
-              {" "}
-              {ChatStatus === 1 ? (
-                <>
-                  <Spinner size="xl" />
-                  Processing the File
-                </>
-              ) : (
-                <>
-                  {ChatStatus === 2 ? (
-                    <>
-                      {" "}
-                      <Spinner size="xl" />
-                      Generating Summary
-                    </>
-                  ) : (
-                    <>
-                      {ChatStatus === 3 ? <>File Processing Failed</> : <></>}
-                    </>
-                  )}
-                </>
-              )}
-            </VStack>
-          </>
-        )}
       </VStack>
       <HStack w={"full"} spacing={"4"} padding={["0", "2", "4"]}>
         <IconButton

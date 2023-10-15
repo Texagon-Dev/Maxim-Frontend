@@ -3,3 +3,9 @@
     box-shadow: inset 6px 6px 12px #e6e6e6,
         inset -6px -6px 12px #fafafa;
 }
+
+#history {
+    background: #e0e0e0;
+    box-shadow: inset 5px 5px 5px #f1f1f1,
+        inset -5px -5px 5px #ededed;
+}

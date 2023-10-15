@@ -22,6 +22,7 @@ export default function Login() {
   const [InputEmail, setInputEmaill] = useState("");
   const [InputPass, setInputPass] = useState("");
   const toast = useToast();
+  const [loading, setLoading] = useState(false);
 
   const isValidEmailFormat = (email) => {
     const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
@@ -29,6 +30,7 @@ export default function Login() {
   };
 
   async function loginSupabase() {
+    setLoading(true);
     if (!isValidEmailFormat(InputEmail)) {
       toast({
         title: "Error",
@@ -70,6 +72,7 @@ export default function Login() {
         isClosable: true,
       });
     }
+    setLoading(false);
   }
 
   function LoginFunction() {
@@ -161,6 +164,7 @@ export default function Login() {
             onChange={(e) => setInputPass(e.target.value)}
           />
           <ButtonCustom
+            isLoading={loading}
             isExpanded={true}
             size={"lg"}
             btnName={

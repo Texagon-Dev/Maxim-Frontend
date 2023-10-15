@@ -6,7 +6,7 @@ import './shadows.css'
 
 function MessageUI(props) {
   const [message, setMessage] = React.useState(props.message.split("\n"));
-
+  console.log(message)
   React.useEffect(() => {
     document.getElementById("chatbox").scrollTop =
       document.getElementById("chatbox").scrollHeight;
@@ -37,15 +37,6 @@ function MessageUI(props) {
             {props.message}
           </Text>
         </HStack>
-        {props.source.length > 0 ? (
-          <>
-            <Text as={"p"} fontSize={"sm"} alignSelf={"flex-start"}>
-              Page Numbers = {props.source.join(", ")}
-            </Text>
-          </>
-        ) : (
-          <></>
-        )}
       </VStack>
     </Flex>
   ) : (

@@ -6,6 +6,7 @@ import { BiMessageDetail } from "react-icons/bi";
 import IconButton from "../IconButton";
 import { DelChat, EditChat, waitForOneSecond } from "../../Shared/Function";
 import EditModal from "./EditModal";
+import '../shadows.css'
 
 function HistoryButton(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -58,15 +59,15 @@ function HistoryButton(props) {
 
   return (
     <HStack
-      border={"1px"}
-      borderColor={"whiteAlpha.400"}
-      bg={"whiteAlpha.200"}
+      id='input-field'
       transition={"all .2s ease-in-out"}
       _hover={{
         bg: "whiteAlpha.400",
         color: "brand.main",
       }}
       paddingY={"2"}
+      border={'1px'}
+      borderColor={'gray.200'}
       paddingX={"3"}
       cursor={"pointer"}
       rounded={"lg"}
@@ -83,7 +84,7 @@ function HistoryButton(props) {
         w={"full"}
         as="p"
         size={["sm"]}
-        color="white"
+        color="brand.main"
         isTruncated={true}
         {...props}
 
@@ -92,7 +93,6 @@ function HistoryButton(props) {
             props.setSelectedChat(props.chat);
           } }
         }
-        
       >
         {props.isExpanded ? props.historyTitle : null}
       </Heading>
@@ -101,7 +101,7 @@ function HistoryButton(props) {
           <Button
             padding={"0"}
             bg={"transparent"}
-            color={"white"}
+            color={"brand.main"}
             _hover={{
               bg: "whiteAlpha.700",
               color: "brand.main",
@@ -117,7 +117,7 @@ function HistoryButton(props) {
           <Button
             p={"0"}
             bg={"transparent"}
-            color={"white"}
+            color={"brand.main"}
             _hover={{
               bg: "whiteAlpha.700",
               color: "brand.main",
@@ -136,6 +136,7 @@ function HistoryButton(props) {
           boxSize={9}
           type={"light"}
           bg="transparent"
+          color={"brand.main"}
         />
       )}
       <EditModal isOpen={isOpen} onClose={onClose} chatid={props.chat.id} fnc = {EDC} />

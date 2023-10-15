@@ -26,13 +26,344 @@ import PaymentFailed from "./pages/Payments/Failed";
 import PaymentSuccessful from "./pages/Payments/Success";
 
 function App() {
-  const [SelectedChat, setSelectedChat] = useState(null);
-  const [ActiveChat, setActiveChat] = useState();
+  const [SelectedChat, setSelectedChat] = useState(
+    {
+      id: 1,
+      uuid: "1",
+      history: [
+        {
+          "text": "How Do you Do",
+          "sender": "Bot"
+        },
+        {
+          "text": "I am Doing Fine",
+          "sender": "User"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasd'",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer that question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasda",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "sa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to provide a helpful answer to the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "sadasd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "ad",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to your question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to the question as it is not related to the given context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but the provided context does not contain any relevant information related to the question \"as\". Therefore, I am unable to provide an answer. Please provide a question that is related to the context provided.",
+          "sender": "Bot"
+        }
+      ],
+      ChatName: 'Chat 1'
+    }
+  );
+  const [ActiveChat, setActiveChat] = useState(
+    {
+      id: 1,
+      uuid: "1",
+      history: [
+        {
+          "text": "How Do you Do",
+          "sender": "Bot"
+        },
+        {
+          "text": "I am Doing Fine",
+          "sender": "User"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasd'",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer that question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasda",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "sa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to provide a helpful answer to the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "sadasd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "ad",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to your question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to the question as it is not related to the given context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but the provided context does not contain any relevant information related to the question \"as\". Therefore, I am unable to provide an answer. Please provide a question that is related to the context provided.",
+          "sender": "Bot"
+        }
+      ],
+      ChatName: 'Chat 1'
+    }
+  );
   const [ActiveFile, setActiveFile] = useState(null);
   const [ChatHistory, setChatHistory] = useState([
     {
       id: 1,
-
+      uuid: "1",
+      history: [
+        {
+          "text": "How Do you Do",
+          "sender": "Bot"
+        },
+        {
+          "text": "I am Doing Fine",
+          "sender": "User"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasd'",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer that question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "dasda",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "sa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to provide a helpful answer to the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "sadasd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "asa",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "ad",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to your question as it is not related to the provided context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "asd",
+          "sender": "User"
+        },
+        {
+          "text": "I apologize, but I am unable to answer the question as it is not related to the provided context. Is there anything else I can assist you with?",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but I am unable to provide an answer to the question as it is not related to the given context.",
+          "sender": "Bot"
+        },
+        {
+          "text": "as",
+          "sender": "User"
+        },
+        {
+          "text": "I'm sorry, but the provided context does not contain any relevant information related to the question \"as\". Therefore, I am unable to provide an answer. Please provide a question that is related to the context provided.",
+          "sender": "Bot"
+        }
+      ],
+      ChatName: 'Chat 1'
     }
   ]);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -46,9 +377,9 @@ function App() {
   async function setChatHistoryfunc() {
     console.log("Update Chat Issued");
 
-    setChatHistory([]);
+    //setChatHistory([]);
     setchatloading(true);
-    setChatHistory(await GetAllChats());
+    //setChatHistory(await GetAllChats());
     setchatloading(false);
 
     console.log("Update Chat Resolved");
@@ -82,7 +413,6 @@ function App() {
       console.log("Selected Chat : ", SelectedChat);
       setActiveChat(SelectedChat);
       setNewChat(false);
-
       setChatStatus(5); //Loading Supabase Document
 
       //setChatStatus(4);//Chat Started
