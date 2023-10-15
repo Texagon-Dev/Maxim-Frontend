@@ -1,14 +1,26 @@
-import { HStack, VStack, Box, Show, Spinner } from "@chakra-ui/react";
+import { HStack, VStack, Box, Show, Spinner, useDisclosure } from "@chakra-ui/react";
 import React, { useRef, useEffect } from "react";
 import MessageUI from "./components/MessageUI";
 import InputField from "./components/InputField";
 import IconButton from "./components/IconButton";
 import { BiSolidSend } from "react-icons/bi";
+import {FaMagic} from 'react-icons/fa'
 import { GetRequest, UpdateChatHist } from "./Shared/Function";
+import { useMediaQuery } from "@chakra-ui/react";
+import PdfModal from "./components/PdfModal";
 
 function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
   const [messages, setMessages] = React.useState(
-    ActiveChat ? ActiveChat.ChatHistory : []
+    ActiveChat ? ActiveChat.ChatHistory : [
+      {
+        sender: "Bot",
+        text: "Welcome to Summarizer Bot",
+      },
+      {
+        sender: "User",
+        text: "Upload a PDF File to get started",
+      }
+    ]
   );
 
   const [ChatFileType, setChatFileType] = React.useState(
@@ -93,20 +105,23 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
     setuserfieldmsg("");
   };
 
+  const mobile = useMediaQuery("(max-width: 768px)");
+  console.log("Mobile : ", mobile[0]);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <VStack
-      bg="white"
+      bg="#f0f0f0"
       spacing={"3"}
       padding={["0", "2", "4"]}
       w={"full"}
-      h={"full"}
+      h={!mobile[0] ? "full" : "87dvh"}
       align={"flex-start"}
       justify={"space-between"}
     >
       <Show below="md">
         <Box w={"full"} h={"8"} overflowY={"auto"} overflowX={"hidden"}></Box>
       </Show>
-
       <VStack
         w={"full"}
         h={"full"}
@@ -168,9 +183,23 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
         )}
       </VStack>
       <HStack w={"full"} spacing={"4"} padding={["0", "2", "4"]}>
+        <IconButton
+          padding="3"
+          onClick={onOpen}
+          _hover={{
+            bg: "brand.main",
+            color: "brand.light",
+          }}
+          color={"brand.main"}
+          transition={"all .2s ease-in-out"}
+          icon={FaMagic}
+          boxSize={"14"}
+          type={"light"}
+        />
         <InputField
           placeholder={"Type your message"}
           size="lg"
+          h={"14"}
           setuserfieldmsg={setuserfieldmsg}
           fieldmsg={userfieldmsg}
           onKeyDown={onEnterPress}
@@ -181,12 +210,14 @@ function ChatSection({ ActiveChat, updateChatHistoryfunc, ChatStatus }) {
             bg: "brand.main",
             color: "brand.light",
           }}
+          color={"white"}
           transition={"all .2s ease-in-out"}
           icon={BiSolidSend}
-          boxSize={"12"}
+          boxSize={"14"}
           type={"primary"}
         />
       </HStack>
+      <PdfModal isOpen={isOpen} onClose={onClose} />
     </VStack>
   );
 }

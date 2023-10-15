@@ -90,13 +90,13 @@ export default function Signup() {
       direction={["column", "column", "row"]}
       w={"full"}
       h={"full"}
-      bg={"white"}
+      bg={"#f0f0f0"}
     >
       <VStack
         padding={"5"}
         w={"full"}
         h={"full"}
-        align={"flex-start"}
+        align={"center"}
         spacing={"6"}
       >
         <HStack w={"full"} justify={"center"} align={"center"}>
@@ -112,7 +112,7 @@ export default function Signup() {
           />
         </HStack>
         <VStack
-          w={"full"}
+          w={['full', 'full', 'container.md', 'container.md']}
           h={"full"}
           justify={"center"}
           spacing={"4"}
@@ -126,54 +126,9 @@ export default function Signup() {
           >
             Lets get started!
           </Text>
-          <VStack w={"full"} spacing={"6"} align={"flex-start"}>
-            <ButtonCustom
-              leftIcon={<FaGoogle />}
-              isExpanded={true}
-              size={"lg"}
-              btnName={"Login with Google"}
-              type={"google"}
-              w={"full"}
-              onClick={() => {
-                google_login();
-              }}
-            />
-            <ButtonCustom
-              leftIcon={<FaMicrosoft />}
-              isExpanded={true}
-              size={"lg"}
-              btnName={"Login with Microsoft"}
-              type={"google"}
-              w={"full"}
-              onClick={() => {
-                microsoft_login();
-              }}
-            />
-          </VStack>
-          <Divider orientation="horizontal" w={"full"} />
-          <HStack w={"full"}>
-            <InputField
-              label={"First Name"}
-              placeholder={"Julie"}
-              type={"text"}
-              value={InputFirstName}
-              onChange={(e) => {
-                setInputFirstsName(e.target.value);
-              }}
-            />
-            <InputField
-              label={"Second Name"}
-              placeholder={"Dupont"}
-              type={"text"}
-              value={InputSecName}
-              onChange={(e) => {
-                setInputSecName(e.target.value);
-              }}
-            />
-          </HStack>
           <InputField
             label={"Email"}
-            placeholder={"julie.dupont@email.com"}
+            placeholder={"Enter your email address"}
             type={"email"}
             value={InputEmail}
             onChange={(e) => {
@@ -181,8 +136,53 @@ export default function Signup() {
             }}
           />
           <InputField
+            label={"Phone Number"}
+            placeholder={"Enter your phone number"}
+            type={"number"}
+            value={InputEmail}
+            onChange={(e) => {
+              setInputEmaill(e.target.value);
+            }}
+          />
+          <InputField
+            placeholder={"Enter your Language"}
+            type={"text"}
+            value={InputEmail}
+            onChange={(e) => {
+              setInputEmaill(e.target.value);
+            }}
+          />
+          <Stack w={"full"} direction={['column', 'column', 'row']} spacing={"4"}>
+            <InputField
+              label={"Country"}
+              placeholder={"Enter your country"}
+              type={"text"}
+              value={InputEmail}
+              onChange={(e) => {
+                setInputEmaill(e.target.value);
+              }}
+            />
+            <InputField
+              placeholder={"Enter your state"}
+              type={"text"}
+              value={InputEmail}
+              onChange={(e) => {
+                setInputEmaill(e.target.value);
+              }}
+            />
+          </Stack>
+          <InputField
             label={"Password"}
-            placeholder={"@123Ju!"}
+            placeholder={"Enter your password"}
+            type={"password"}
+            value={InputPass}
+            onChange={(e) => {
+              setInputPass(e.target.value);
+            }}
+          />
+          <InputField
+            label={"Password"}
+            placeholder={"Enter second keyword like mother's name"}
             type={"password"}
             value={InputPass}
             onChange={(e) => {
@@ -215,16 +215,32 @@ export default function Signup() {
               Signin
             </Text>
           </Text>
+          <Divider orientation="horizontal" w={"full"} />
+          <VStack w={"full"} spacing={"6"} align={"flex-start"}>
+            <ButtonCustom
+              leftIcon={<FaGoogle />}
+              isExpanded={true}
+              size={"lg"}
+              btnName={"Login with Google"}
+              type={"google"}
+              w={"full"}
+              onClick={() => {
+                google_login();
+              }}
+            />
+            <ButtonCustom
+              leftIcon={<FaMicrosoft />}
+              isExpanded={true}
+              size={"lg"}
+              btnName={"Login with Microsoft"}
+              type={"google"}
+              w={"full"}
+              onClick={() => {
+                microsoft_login();
+              }}
+            />
+          </VStack>
         </VStack>
-      </VStack>
-      <VStack hideBelow={"md"} w={"full"} h={"full"}>
-        <Image
-          src={loginImg}
-          alt={"logo"}
-          w={"full"}
-          h={"full"}
-          objectFit={"contain"}
-        />
       </VStack>
     </Stack>
   );

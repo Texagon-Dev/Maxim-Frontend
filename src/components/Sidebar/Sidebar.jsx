@@ -10,21 +10,28 @@ import { LuLogOut } from "react-icons/lu";
 import { Spinner } from "@chakra-ui/react";
 import "./Sidebar.css";
 import { signout } from "../../Shared/Authentication";
+import { useMediaQuery } from "@chakra-ui/react";
+import '../shadows.css'
 
 export default function Sidebar(props) {
+  const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
   return props.isExpanded ? (
     <VStack
       transition={"all .2s ease-in-out"}
       w={"64"}
       align={"flex-start"}
-      h={"full"}
-      bg={"brand.main"}
+      id='input-field'
+      h={"100dvh"}
+      bg={"#f0f0f0"}
+      shadow={"lg"}
       color={"white"}
       padding={"2"}
       position={["absolute", "absolute", "relative"]}
       top={["0", "0", "auto"]}
       left={["0", "0", "auto"]}
       zIndex={["100", "100", "auto"]}
+      borderRight="1px"
+      borderRightColor={"gray.200"}
     >
       <VStack align={"flex-start"} h={24} marginTop={"2"}>
         <IconButton
@@ -32,6 +39,7 @@ export default function Sidebar(props) {
           icon={IoIosArrowBack}
           boxSize={10}
           type={"light"}
+          bg={isLargerThan600 ? "gray.200" : "transparent"}
         />
       </VStack>
       <VStack
@@ -42,7 +50,6 @@ export default function Sidebar(props) {
         overflowY={"auto"}
         overflowX={"hidden"}
       >
-        
         {/* history array and logic goes here */}
         {props.history.length > 0 ? (
           
@@ -54,15 +61,12 @@ export default function Sidebar(props) {
               chat={history}
               key={history.id}
               setChatHistoryfunc={props.setChatHistoryfunc}
-
               ActiveChat={props.ActiveChat}
               SelectedChat={props.SelectedChat}
               setSelectedChat={props.setSelectedChat}
               setActiveChat={props.setActiveChat}
             />
-
           ))
-
         ) : (
           <>
             {props.chatloading ? (
@@ -72,7 +76,7 @@ export default function Sidebar(props) {
                 </>
               </HStack>
             ) : (
-              <Text color={"brand.light"} fontSize={"sm"} padding={"2"}>
+              <Text color={"brand.main"} fontSize={"sm"} padding={"2"}>
                 No history
               </Text>
             )}
@@ -113,20 +117,21 @@ export default function Sidebar(props) {
           }}
         />
       </VStack>
-
-      
-
     </VStack>
   ) : (
     <VStack
       display={["none", "none", "flex"]}
       transition={"all .2s ease-in-out"}
       w={"20"}
+      id='input-field'
       align={"flex-start"}
-      h={"full"}
-      bg={"brand.main"}
-      color={"white"}
+      h={"100dvh"}
+      bg={"#f0f0f0"}
+      shadow={"lg"}
+      color={"brand.main"}
       padding={"2"}
+      borderRight="1px"
+      borderRightColor={"gray.200"}
     >
       <VStack align={"flex-start"} h={24} marginTop={"2"}>
         <IconButton
@@ -135,6 +140,7 @@ export default function Sidebar(props) {
           icon={IoIosArrowBack}
           boxSize={10}
           type={"light"}
+          bg={isLargerThan600 ? "gray.200" : "transparent"}
         />
       </VStack>
       <VStack
@@ -169,7 +175,7 @@ export default function Sidebar(props) {
                 </>
               </HStack>
             ) : (
-              <Text color={"brand.light"} fontSize={"sm"} padding={"2"}>
+              <Text color={"brand.main"} fontSize={"sm"} padding={"2"}>
                 No history
               </Text>
             )}

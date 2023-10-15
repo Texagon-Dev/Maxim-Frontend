@@ -29,11 +29,16 @@ function App() {
   const [SelectedChat, setSelectedChat] = useState(null);
   const [ActiveChat, setActiveChat] = useState();
   const [ActiveFile, setActiveFile] = useState(null);
-  const [ChatHistory, setChatHistory] = useState([]);
+  const [ChatHistory, setChatHistory] = useState([
+    {
+      id: 1,
+
+    }
+  ]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [chatloading, setchatloading] = useState(true);
   const [NewChat, setNewChat] = useState(false);
-  const [ChatStatus, setChatStatus] = useState(-1);
+  const [ChatStatus, setChatStatus] = useState(4);
 
   // -1 => No Chat , 1 => File Processing , 2 => File Processes, 3 => File Failed , 4 => Chat Started
   // 5 ==> Loading Supabase Document , 6 ==> Supabase Document Loaded , 7 ==> Supabase Document Failed
@@ -160,9 +165,10 @@ function App() {
       <Switch>
         <Stack
           direction={["column", "column", "row"]}
-          h={"100dvh"}
+          minH={"100dvh"}
           spacing={"0"}
           align={"flex-start"}
+          bg={"#f0f0f0"}
         >
           <Route path="/" exact>
             <Dashboard />
@@ -170,11 +176,9 @@ function App() {
           <Route path="/Homepage" exact>
             <Homepage />
           </Route>
-
           <Route path="/Pricing" exact>
             <Pricing />
           </Route>
-
           <Route path="/dashboard">
             <Sidebar
               setIsExpanded={setIsExpanded}
@@ -189,15 +193,14 @@ function App() {
             />
             <Header setIsExpanded={setIsExpanded} isExpanded={isExpanded} />
           </Route>
-
           <Route exact path="/dashboard/chat">
             <Stack
               display={["none", "none", "flex"]}
               overflowY={"auto"}
               direction={["column", "column", "row"]}
               w={"full"}
-              h={"full"}
-              bg={"brand.light"}
+              h={"100dvh"}
+              bg={"#f0f0f0"}
               align={"flex-start"}
             >
               <ChatSection

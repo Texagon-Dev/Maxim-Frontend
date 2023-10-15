@@ -108,15 +108,16 @@ export default function Login() {
     <Stack
       direction={["column", "column", "row"]}
       w={"full"}
-      h={"full"}
-      bg={"white"}
+      h={"100dvh"}
+      bg={"#f0f0f0"}
     >
       <VStack
         padding={"5"}
         w={"full"}
         h={"full"}
-        align={"flex-start"}
+        align={"center"}
         spacing={"6"}
+        justify={"center"}
       >
         <HStack w={"full"} justify={"center"} align={"center"}>
           <Image
@@ -131,7 +132,7 @@ export default function Login() {
           />
         </HStack>
         <VStack
-          w={"full"}
+          w={['full', 'full', 'container.md', 'container.md']}
           h={"full"}
           justify={"center"}
           spacing={"4"}
@@ -145,27 +146,6 @@ export default function Login() {
           >
             Welcome back!
           </Text>
-          <VStack w={"full"} spacing={"6"} align={"flex-start"}>
-            <ButtonCustom
-              leftIcon={<FaGoogle />}
-              isExpanded={true}
-              size={"lg"}
-              btnName={"Login with Google"}
-              type={"google"}
-              w={"full"}
-              onClick={google_login}
-            />
-            <ButtonCustom
-              leftIcon={<FaMicrosoft />}
-              isExpanded={true}
-              size={"lg"}
-              btnName={"Login with Microsoft"}
-              type={"google"}
-              w={"full"}
-              onClick={microsoft_login}
-            />
-          </VStack>
-          <Divider orientation="horizontal" w={"full"} />
           <InputField
             label={"Email"}
             placeholder={"Enter your email"}
@@ -222,16 +202,29 @@ export default function Login() {
           >
             Forgot password?
           </Text>
+          <Divider orientation="horizontal" w={"full"} />
+          <VStack w={"full"} spacing={"6"} align={"flex-start"}>
+            <ButtonCustom
+              leftIcon={<FaGoogle />}
+              isExpanded={true}
+              size={"lg"}
+              btnName={"Login with Google"}
+              type={"google"}
+              w={"full"}
+              onClick={google_login}
+            />
+            <ButtonCustom
+              leftIcon={<FaMicrosoft />}
+              isExpanded={true}
+              size={"lg"}
+              btnName={"Login with Microsoft"}
+              type={"google"}
+              w={"full"}
+              onClick={microsoft_login}
+            />
+          </VStack>
         </VStack>
-      </VStack>
-      <VStack hideBelow={"md"} w={"full"} h={"full"}>
-        <Image
-          src={loginImg}
-          alt={"logo"}
-          w={"full"}
-          h={"full"}
-          objectFit={"contain"}
-        />
+        
       </VStack>
     </Stack>
   );

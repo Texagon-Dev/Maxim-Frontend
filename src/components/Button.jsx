@@ -6,8 +6,9 @@ function ButtonCustom(props) {
         props.type === 'primary' ?
         <Button
             transition={'all .2s ease-in-out'}
-            bg={'brand.main'}
+            bgGradient={'linear(to-r, brand.main,brand.light)'}
             color={'white'}
+            rounded={'full'}
             _hover={{
                 bg: 'brand.light',
                 color: 'brand.main'
@@ -21,8 +22,9 @@ function ButtonCustom(props) {
         :
         <Button
             transition={'all .2s ease-in-out'}
-            bg={'brand.light'}
-            color={'brand.main'}
+            bgGradient={'linear(to-r, brand.light,brand.main)'}
+            color={"white"}
+            rounded={'full'}
             _hover={{
                 bg: 'brand.main',
                 color: 'brand.light',

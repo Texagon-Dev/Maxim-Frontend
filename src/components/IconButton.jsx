@@ -5,8 +5,8 @@ function IconButton(props) {
     return (
         <Icon 
             as={props.icon}
-            color={props.type === 'primary' ? 'brand.main' : 'brand.light'}
-            bg={props.type === 'primary' ? 'brand.light' : 'brand.main'}
+            color={props.type === 'primary' ? 'black' : 'black'}
+            bg={props.type === 'primary' ? 'brand.main' : 'white'}
             padding={'2'}
             cursor={'pointer'}
             rounded={'lg'}

@@ -2,6 +2,7 @@ import { HStack, Text, Flex, Icon, VStack } from "@chakra-ui/react";
 import React from "react";
 import { PiRobotBold } from "react-icons/pi";
 import { FaRegUserCircle } from "react-icons/fa";
+import './shadows.css'
 
 function MessageUI(props) {
   const [message, setMessage] = React.useState(props.message.split("\n"));
@@ -20,9 +21,10 @@ function MessageUI(props) {
     >
       <VStack>
         <HStack
-          bg={"brand.main"}
-          color={"brand.light"}
-          paddingX={"3"}
+          bg={"white"}
+          id="input-field"
+          color={"brand.main"}
+          paddingX={"5"}
           paddingY={"4"}
           rounded={"lg"}
           borderBottomLeftRadius={"none"}
@@ -49,14 +51,12 @@ function MessageUI(props) {
   ) : (
     <Flex w={"full"} align={"flex-end"} justify={"flex-end"}>
       <HStack
-        bg={"brand.light"}
+        bg={"white"}
         color={"brand.main"}
-        paddingX={"3"}
-        paddingY={"2"}
+        id='input-field'
+        paddingX={"5"}
+        paddingY={"4"}
         rounded={"lg"}
-        border={"1px"}
-        borderColor={"brand.main"}
-        borderBottomRightRadius={"none"}
         spacing={"4"}
         {...props}
       >
@@ -65,10 +65,6 @@ function MessageUI(props) {
             {paragraph}
           </Text>
         ))}
-
-        {/* <Text as={"p"} fontSize={"lg"}>
-          {props.message}
-        </Text> */}
         <Icon as={FaRegUserCircle} boxSize={"6"} />
       </HStack>
     </Flex>

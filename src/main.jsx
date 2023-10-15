@@ -8,8 +8,9 @@ import './index.css'
 const theme = extendTheme({
   colors: {
     brand: {
-      main: '#5A9DAE',
-      light: '#E4F0F5',
+      main: '#2760AA',
+      light: '#34CFDF',
+      text: '#FFFFFF'
     }
   }
 })

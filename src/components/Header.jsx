@@ -21,7 +21,9 @@ export default function Header(props) {
                     onClick={() => props.setIsExpanded(true)}
                     icon={HamburgerIcon}
                     boxSize={10}
+                    color={'white'}
                     type={'light'}
+                    bg={'transparent'}
                 />
             </HStack>
         </Show>
